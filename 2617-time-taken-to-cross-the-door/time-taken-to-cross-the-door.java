@@ -8,11 +8,10 @@ class Solution {
         Queue<Integer> exitQueue = new LinkedList<>();
 
         int time = 0;
-        int lastAction = -1; // -1: unused, 0: enter, 1: exit
+        int lastAction = -1;
         int index = 0;
 
         while (index < n || !enterQueue.isEmpty() || !exitQueue.isEmpty()) {
-            // Add all persons arriving at the current time to their respective queues
             while (index < n && arrival[index] <= time) {
                 if (state[index] == 0) {
                     enterQueue.add(index);
@@ -22,7 +21,6 @@ class Solution {
                 index++;
             }
 
-            // Determine action based on priority and door state
             if (!exitQueue.isEmpty() && (lastAction == 1 || lastAction == -1 || enterQueue.isEmpty())) {
                 result[exitQueue.poll()] = time;
                 lastAction = 1;
@@ -30,7 +28,7 @@ class Solution {
                 result[enterQueue.poll()] = time;
                 lastAction = 0;
             } else {
-                lastAction = -1; // If no one uses the door, reset lastAction
+                lastAction = -1; 
             }
 
             time++;
@@ -39,4 +37,4 @@ class Solution {
         return result;
     }
 
-    }
+}
