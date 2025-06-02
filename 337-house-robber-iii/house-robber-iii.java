@@ -2,11 +2,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Solution {
-    private Map<TreeNode, Integer> memo = new HashMap<>();
+    private Map<TreeNode, Integer> hm = new HashMap<>();
 
     public int rob(TreeNode root) {
         if (root == null) return 0;
-        if (memo.containsKey(root)) return memo.get(root);
+        if (hm.containsKey(root)) return hm.get(root);
 
         int rob = root.val;
         if (root.left != null) {
@@ -19,7 +19,7 @@ class Solution {
         int notRob = rob(root.left) + rob(root.right);
 
         int result = Math.max(rob, notRob);
-        memo.put(root, result); 
+        hm.put(root, result); 
         return result;
     }
 }
