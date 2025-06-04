@@ -16,11 +16,13 @@ class Solution {
             }
         }
 
+        // Append the last group
         sb.append(chars[n - 1]);
         if (count > 1) {
             sb.append(count);
         }
 
+        // Copy the contents of the StringBuilder back to the chars array
         for (int i = 0; i < sb.length(); i++) {
             chars[i] = sb.charAt(i);
         }
